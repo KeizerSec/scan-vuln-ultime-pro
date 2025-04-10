@@ -64,3 +64,20 @@ def lancer_scan(ip):
     else:
         logging.warning(f"Tentative de scan avec IP invalide : {ip}")
         return None, None
+      if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) != 2:
+        print("Usage : python3 scan.py <IP>")
+        sys.exit(1)
+
+    ip = sys.argv[1]
+
+    resultat, chemin = lancer_scan(ip)
+
+    if resultat:
+        print(f"Scan terminé pour {ip}")
+        print(resultat)
+        print(f"Rapport HTML généré ici : {chemin}")
+    else:
+        print("IP invalide")
